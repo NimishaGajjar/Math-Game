@@ -1,5 +1,7 @@
 require_relative 'game'
 
+# starts new game
+
 puts "Welcome to the 2-Player Math Game!"
 print "Player 1, please enter your name: "
 player1_name = gets.chomp
