@@ -1,6 +1,8 @@
 require_relative 'player'
 
 class Game
+
+  # Initialize Game Players and current player"
   def initialize(player1_name, player2_name)
     @player1 = Player.new(player1_name)
     @player2 = Player.new(player2_name)
@@ -22,11 +24,13 @@ class Game
     @player1.lives == 0 || @player2.lives == 0
   end
 
+  # Method to generate question
   def generate_question
     @num1 = rand(1..20)
     @num2 = rand(1..20)
   end
 
+  # Method to display scores
   def display_scores
     puts "----- Current Scores -----"
     puts "#{@player1.name}: #{score_fraction(@player1)}"
@@ -37,12 +41,14 @@ class Game
     "#{player.lives}/3"
   end
 
+  # Method for asking question 
   def ask_question
     puts "#{@current_player.name}, What does #{@num1} plus #{@num2} equal?"
     answer = gets.chomp.to_i
     validate_answer(answer)
   end
 
+  # Method for Validating answer
   def validate_answer(answer)
     correct_answer = @num1 + @num2
     if answer == correct_answer
@@ -59,6 +65,7 @@ class Game
     @current_player = (@current_player == @player1) ? @player2 : @player1
   end
 
+  # Method for announce winner
   def announce_winner
     winner = (@player1.lives > 0) ? @player1 : @player2
     loser = (winner == @player1) ? @player2 : @player1
